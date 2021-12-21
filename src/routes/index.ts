@@ -1,10 +1,12 @@
 import {Router} from 'express'
 
-const route = Router()
+const routes = Router()
 
-route.post("/login",()=>{
+routes.post("/login",()=>{
     console.log("login")
 })
-route.post("/refresh_token",()=>{
+routes.post("/refresh_token",()=>{
     console.log("refresh_token")
 })
+
+export default routes

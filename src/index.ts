@@ -1,4 +1,5 @@
 import express,{Express} from 'express'
+import routes from './routes'
 
 class App{
 
@@ -6,6 +7,11 @@ class App{
 
     constructor(){
         this.app = express()
+        this.route()
+    }
+
+    route(){
+        this.app.use(routes)
     }
 }
 
