@@ -1,21 +1,18 @@
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {User} from "./entity/User";
+import express,{Express} from 'express'
+import routes from './routes'
 
-createConnection().then(async connection => {
+class App{
 
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
+    app:Express
 
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(User);
-    console.log("Loaded users: ", users);
+    constructor(){
+        this.app = express()
+        this.route()
+    }
 
-    console.log("Here you can setup and run express/koa/any other framework.");
+    route(){
+        this.app.use(routes)
+    }
+}
 
-}).catch(error => console.log(error));
+export default App

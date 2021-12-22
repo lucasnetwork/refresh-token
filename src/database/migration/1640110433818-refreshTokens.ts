@@ -8,7 +8,7 @@ export class refreshTokens1640110433818 implements MigrationInterface {
             columns:[
                 {
                     name:"id",
-                    type:'number',
+                    type:'int',
                     isPrimary:true
                 },
                 {
@@ -17,15 +17,15 @@ export class refreshTokens1640110433818 implements MigrationInterface {
                 },
                 {
                     name:"userId",
-                    type:"number"
+                    type:"int",
+                    isUnique: true,
                 }
             ],
             foreignKeys:[
                 {
                     referencedTableName:'users',
+                    referencedColumnNames:['id'],
                     columnNames:['userId'],
-                    referencedColumnNames:["id"],
-                    onDelete:"ON DELETE"
                 }
             ]
             
@@ -33,6 +33,7 @@ export class refreshTokens1640110433818 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('refresh_tokens');
     }
 
 }

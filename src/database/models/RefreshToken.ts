@@ -1,9 +1,9 @@
-import { BaseEntity, Column, Entity, ManyToOne } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import User from "./User";
 
 @Entity("refreshToken")
 export default class RefreshToken extends BaseEntity{
-    @Column()
+    @PrimaryGeneratedColumn()
     id:number;
 
     @Column()
