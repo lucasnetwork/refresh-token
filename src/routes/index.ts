@@ -1,10 +1,11 @@
 import {Router} from 'express'
+import UserController from '~/Controller/userController'
 
 const routes = Router()
 
-routes.post("/login",()=>{
-    console.log("login")
-})
+const userController = new UserController()
+
+routes.post("/login",userController.execute)
 routes.post("/refresh_token",()=>{
     console.log("refresh_token")
 })
