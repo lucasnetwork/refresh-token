@@ -7,7 +7,7 @@ export default class RefreshToken extends BaseEntity{
     id:number;
 
     @Column()
-    expiration:string;
+    expiration:number;
 
     @ManyToOne(() => User, user=> user.refresh)
     user:User

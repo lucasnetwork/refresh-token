@@ -13,7 +13,7 @@ export class refreshTokens1640110433818 implements MigrationInterface {
                 },
                 {
                     name:"expiration",
-                    type:"varchar"
+                    type:"int"
                 },
                 {
                     name:"userId",
