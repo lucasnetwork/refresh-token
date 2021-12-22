@@ -1,7 +1,7 @@
 import {Entity,BaseEntity,PrimaryGeneratedColumn,Column, OneToMany} from 'typeorm'
 import RefreshToken from './RefreshToken';
 
-@Entity("user")
+@Entity("users")
 export default class User extends BaseEntity{
     @PrimaryGeneratedColumn()
     id:number;

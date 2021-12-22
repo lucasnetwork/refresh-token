@@ -27,7 +27,7 @@ class SessionController{
             const refreshExpired = dayjs().add(15,'second').unix()
             const refresh = await refreshRepository.save({
                 expiration:refreshExpired,
-                userId:existUser.id
+                user:existUser
                 
             })
             const refreshToken = jwt.sign({id:refresh.id},"secrete",{
