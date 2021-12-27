@@ -2,7 +2,7 @@ import express,{Express} from 'express'
 import database from './database'
 import routes from './routes'
 
-database()
+
 
 class App{
 
@@ -10,8 +10,10 @@ class App{
 
     constructor(){
         this.app = express()
-        this.midllewares()
-        this.route()
+        database().catch(e=>console.log(e))
+            this.midllewares()
+            this.route()
+
     }
 
     midllewares() {
