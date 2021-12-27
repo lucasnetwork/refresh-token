@@ -4,7 +4,7 @@ import User from "../database/models/User";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dayjs from 'dayjs'
-import RefreshToken from "~/database/models/RefreshToken";
+import RefreshToken from "../database/models/RefreshToken";
 
 
 class SessionController{
@@ -30,6 +30,7 @@ class SessionController{
                 user:existUser
                 
             })
+            console.log(refresh)
             const refreshToken = jwt.sign({id:refresh.id},"secrete",{
                 expiresIn:"7d"
             })
