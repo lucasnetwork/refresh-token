@@ -1,9 +1,9 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner,Table} from "typeorm";
 
-export class refreshTokens1640110433818 implements MigrationInterface {
+export class refreshTokens1640355059894 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        return await queryRunner.createTable(new Table({
+         await queryRunner.createTable(new Table({
             name:"refresh_tokens",
             columns:[
                 {
@@ -18,7 +18,7 @@ export class refreshTokens1640110433818 implements MigrationInterface {
                 {
                     name:"userId",
                     type:"int",
-                    isUnique: true,
+                    isNullable: true
                 }
             ],
             foreignKeys:[
@@ -26,6 +26,8 @@ export class refreshTokens1640110433818 implements MigrationInterface {
                     referencedTableName:'users',
                     referencedColumnNames:['id'],
                     columnNames:['userId'],
+                    onDelete:"CASCADE",
+                    onUpdate:"CASCADE"
                 }
             ]
             
@@ -33,7 +35,7 @@ export class refreshTokens1640110433818 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('refresh_tokens');
+         await queryRunner.dropTable("refresh_tokens")
     }
 
 }

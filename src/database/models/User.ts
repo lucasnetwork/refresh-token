@@ -1,7 +1,7 @@
 import {Entity,BaseEntity,PrimaryGeneratedColumn,Column, OneToMany} from 'typeorm'
 import RefreshToken from './RefreshToken';
 
-@Entity("users")
+@Entity({name:"users"})
 export default class User extends BaseEntity{
     @PrimaryGeneratedColumn()
     id:number;
@@ -12,6 +12,6 @@ export default class User extends BaseEntity{
     @Column()
     password:string;
 
-    @OneToMany(() => RefreshToken, refresh => refresh.user)
+    @OneToMany(() => RefreshToken, refresh => refresh.user,{onDelete:"CASCADE"})
     refresh:RefreshToken[]
 }
